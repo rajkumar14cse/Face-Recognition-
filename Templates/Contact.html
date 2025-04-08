@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Contact Section</title>
+    <script src="https://kit.fontawesome.com/cef9c3485b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="contact">
+        <div class="container">
+            <div class="contact-left">
+                <h1 class="sub-title"><i class="fas fa-envelope"></i>  Contact Us</h1>
+              <!---<p><i class="fa-solid fa-paper-plane"></i> rajkumargundaboina35@gmail.com <br>manasamateti110@gmail.com </p>
+                <p><i class="fa-solid fa-phone"></i> 6305068698</p>-->
+            <p> manasamateti110@gmail.com</p>
+            <p> rajkumargundaboina35@gmail.com</p>
+            <p> shanmukhi@gmail.com</p>
+            <p> pavan@gmail.com</p>
+
+            </div>
+
+            <div class="contact-right"> 
+                <form name="submit-to-google-sheet">
+                    <h1 class="sub-title">Contact Form</h1>
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+</script>
+<form name="submit-to-google-sheet">
+  </form>
+  
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwaBkrwyMYB6ADgc61XwSxBEP33I5D1hc92S_bdC-LNUEh1uB61dX-h5HWfmcN1YGRQ6w/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
+
+<style>
+/* Full-screen container with flexbox */
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between sections */
+    background-color: #0a0a0a;
+}
+
+/* Contact Left Section - Box with Shadow */
+.contact-left {
+    width: 45%;
+    height: 80vh;
+    background: #d3e0ea; /* Light background */
+    border-radius: 15px; /* Rounded edges */
+    box-shadow: 10px 10px 10px rgba(252, 252, 252, 0.5); /* Soft shadow */
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Contact Right Section (Without Box) */
+.contact-right {
+    width: 45%;
+    height: 80vh;
+    background: #d3e0ea; /* Light blue */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(252, 252, 252, 0.5);
+}
+
+/* Form Styling */
+.contact-right form {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Input fields */
+form input, form textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+/* Submit Button */
+.btn.btn2 {
+    display: inline-block;
+    background-color: #0a98ea;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+    transition: box-shadow 0.3s;
+}
+
+/* Button Hover Effect */
+.btn.btn2:hover {
+    background-color: #0077cc;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+#msg{
+    color: #61b752;
+    margin-top: -10px;
+    display: block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .contact-left, .contact-right {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+}

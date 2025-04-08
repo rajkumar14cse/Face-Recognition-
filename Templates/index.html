@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System</title>
+    <link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="about.css">
+<link rel="stylesheet" href="contact.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    background: #868484;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    /* Description Card */
+    .hover-card {
+            visibility: hidden;
+            width:fit-content;
+            background-color: rgba(238, 212, 235, 0.85);
+            color: rgb(8, 8, 8);
+            text-align: left;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 120%;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            font-size: 14px;
+        }
+
+        /* Show the card when hovering */
+        .hover-container:hover .hover-card {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+}
+button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background-color: #3e8e41;
+            transform: scale(0.95);
+        }
+/*------------navbar theme icon--------*/
+
+
+.navbar {
+    display: flex;
+    background-color: pink;
+    color: rgb(21, 2, 2);
+    padding: 50px 20;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    display: flex;
+    border-radius: 5px;
+    gap:15px;
+
+}
+
+.logo h1 {
+    font-size: 35px;
+    margin: 0;
+    align-items: center;
+}
+.sidebar {
+    position: fixed;
+    right: -200px;
+    top:0;
+    width: 200px;
+    height: 200px;
+    background-color: #333;
+    border-radius: 20px; 
+    z-index: 1000;
+
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+.sidebar ul li {
+    padding: 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    gap: 10px;
+}
+
+.sidebar ul li a:hover {
+    background-color: silver;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+}
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    background-color:white; /* Optional: Background color */
+    padding: 20px 0; /* Optional: Padding for better visibility */
+}
+
+.marquee-text {
+    display: inline-block;
+    color:red;
+    font-size: 18px;
+    font-weight: bold;
+    animation: marquee 10s linear infinite;
+}
+
+/* Keyframes for scrolling effect */
+@keyframes marquee {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+/*first image*/
+.image-section img {
+    width: 600px;  /* Adjust width as needed */
+    height: 450px; /* Adjust height as needed */
+    object-fit: cover; /* Ensures image fills dimensions without distortion */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+}
+
+.container-function {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 700px;
+    margin: 50px auto;
+    gap: 20px; /* Ensures equal spacing between elements */
+
+
+}
+.content-container, .image-container {
+    width: 50%;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.content-container {
+    text-align: left;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+.image-container {
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.sub-header {
+    color: green;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.sub-header:hover {
+    color: violet;
+}
+.main-header {
+    color: #0c57cc;
+    font-size: 28px;
+    font-weight: bold;
+}
+.description {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.functions-section {
+    padding: 50px 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: bold;
+    color:green;
+    transition: color 0.3s ease;
+
+}
+.section-title{
+color:#3498db;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.functions-container {
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* Center Image */
+.center-image {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background: orange;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.center-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    
+}
+
+ /* Main container */
+ .functions-container {
+            position: relative;
+            width: 600px;  /* Adjust size as needed */
+            height: 600px; /* Adjust size as needed */
+            margin: 50px auto;
+        }
+
+        /* Center Image */
+        .center-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px; /* Adjust size */
+            height: 300px; /* Adjust size */
+        }
+
+        .center-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Feature Box Container */
+        .hover-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Feature Box Styling */
+        .feature-box {
+            position: absolute;
+            padding: 12px 15px;
+            background: #3498db;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            width: 175px;
+        }
+
+        /* Positioning feature boxes around the image */
+        .top-center { top: 12%; left: 36%;}
+        .mid-left { top: 45%; left: -15%;   }
+        .mid-right { top: 45%; right: -15%;  }
+        .bottom-left { bottom: 5%; left: 5%; }
+        .lower-right { bottom: 5%; right: 5%; }
+
+        /* Hover Effect */
+        .feature-box:hover {
+            background-color: violet;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Hover Card Styling */
+        .hover-card {
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 5px;
+            display: none; 
+            height: 15px; 
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Show hover card when hovering over feature box */
+        .feature-box:hover .hover-card {
+            display: block;
+        }
+
+.element-style{
+    padding-bottom: 200px;
+}
+/* Footer Styling */
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Footer Links */
+.footer a {
+    color: #f8b400;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+
+    </style>
+ 
+    <nav class="navbar">
+        <div class="logo">
+          
+            <img src="https://res.cloudinary.com/dlsbcwyaq/image/upload/v1742189209/logo_uqd4cj.jpg" alt="Logo">
+            <h1>Attendance Management System</h1>
+ </div>
+    </nav>
+   
+    
+    
+    <aside class="sidebar">
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"/>
+              </svg>Home</a></li>
+            <li><a href="/Contact"><i class="fas fa-envelope"></i> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-outbound" viewBox="0 0 16 16">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5"/>
+              </svg>Contact</a></li>
+            <li><a href="/About"><i class="fas fa-info-circle"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/>
+              </svg>About</a></li>
+        </ul>
+    </aside>
+    <div class="marquee-container">
+        <p class="marquee-text">
+            Attendance is a key factor in success and discipline. Whether in school, work, or personal life, 
+            being present leads to growth, responsibility, and better opportunities!
+        </p>
+        <div class="container">
+            <div class="header">
+             <!---  <h1 class="sub-header">Attendance Management System</h1>-->
+                <h1><strong>Attendance Management</strong> with Face Recognition</h1>
+                <p class="sub-text">Introduce your Students and Employees to a robust attendance management system that makes their attendance punching exciting.</p>
+            </div>
+            <div class="image-section">
+                <img src="https://res.cloudinary.com/dlsbcwyaq/image/upload/v1741197995/Attendance-Management-System-banner_a9axkj.webp" alt="Attendance Management System">
+            </div>
+        </div>
+       <!--- <a href="Take Attendance" class="cta-button">Take Attendance</a>--->
+        
+       <button onclick="runScript()">Take Attendance</button>
+       <pre id="output"></pre>
+       
+       <script>
+           function runScript() {
+               fetch('/run-script')
+                   .then(response => {
+                       if (!response.ok) {
+                           throw new Error("Network response was not ok");
+                       }
+                       return response.json();
+                   })
+                   .then(data => {
+                       document.getElementById('output').innerText = data.output || data.error;
+                   })
+                   .catch(error => {
+                       document.getElementById('output').innerText = 'Fetch error: ' + error;
+                   });
+           }
+       </script>
+       
+        
+
+       <br>
+       <br>
+
+        <section class="functions-section">
+            <h2 class="section-title">Top Functions of Attendance Management System</h2>
+            <p class="section-subtitle">Here are the top 5 functions of integrating the Attendance Management System software in the HRMS solution.</p>
+            
+            <div class="functions-container">
+                <!-- Center Image -->
+                <div class="center-image">
+                    <img src="https://res.cloudinary.com/dlsbcwyaq/image/upload/v1741197797/function_msw1vp.webp" alt="Woman with Laptop">
+                </div>
+                
+                <!-- Feature Boxes -->
+                <div class="hover-container">
+                    <div class="feature-box top-center">
+                        Time Tracking
+                        <div class="hover-card">Efficiently monitor work hours and track productivity in real time.</div>
+                    </div>
+        
+                    <div class="feature-box mid-left">
+                        Overtime Management
+                        <div class="hover-card">Manage overtime efficiently and prevent excessive work hours.</div>
+                    </div>
+                               <div class="feature-box mid-right">
+                        Biometric Integration
+                        <div class="hover-card">Enhance security and attendance tracking with biometric authentication.</div>
+                    </div>
+        
+        
+                    <div class="feature-box bottom-left">
+                        Reporting & Analytics
+                        <div class="hover-card">Generate detailed reports and gain insights into workforce productivity.</div>
+                    </div>
+        
+        
+                    <div class="feature-box lower-right">
+                        Robust Security
+                        <div class="hover-card">Ensure data protection with advanced security measures.</div>
+                    </div>
+                </div>
+            </div>
+        
+        
+        </section>
+        <footer class="footer">
+            <p>&copy; 2025 Attendance Management System. All Rights Reserved.</p>
+            <p>Developed by <a href="#" target="_blank">Student</a></p>
+
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> |  
+                <a href="contact.html">Contact Us</a>
+            </div>
+           
+            </div>
+        </footer>
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sidebar = document.querySelector(".sidebar");
+            const toggleButton = document.createElement("button");
+            
+            toggleButton.innerText = "☰";
+            toggleButton.style.position = "fixed";
+            toggleButton.style.right = "210px";
+            toggleButton.style.top = "0px";
+            toggleButton.style.color = "red";
+            toggleButton.style.border = "none";
+            toggleButton.style.padding = "30px"; // Initial size
+            toggleButton.style.fontSize = "20px"; // Initial font size
+            toggleButton.style.cursor = "pointer";
+            toggleButton.style.transition = "all 0.3s ease"; // Smooth transition
+            toggleButton.style.width = "20px";  // Reduce button width
+            toggleButton.style.height = "30px";
+            toggleButton.style.position = "absolute";
+            toggleButton.style.backgroundColor = "pink";
+           
+            
+            
+            document.body.appendChild(toggleButton);
+            
+            toggleButton.addEventListener("click", () => {
+                if (sidebar.style.right === "0px") {
+                    sidebar.style.right = "-200px";
+                } else {
+                    sidebar.style.right = "0px";
+                }
+            }); 
+            
+        
+            // Add hover effect for sidebar items
+            document.querySelectorAll(".sidebar ul li a").forEach(item => {
+                item.addEventListener("mouseover", () => {
+                    item.style.transform = "scale(1.1)";
+                });
+                item.addEventListener("mouseout", () => {
+                    item.style.transform = "scale(1)";
+                });
+            });
+        });
+        
+        document.querySelectorAll(".card").forEach(card => {
+            card.addEventListener("click", () => {
+                card.classList.toggle("flipped");
+            });
+        });
+        
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const featureBoxes = document.querySelectorAll(".feature-box");
+            const totalCount = document.getElementById("totalCount");
+            
+            let activeCount = 0;
+        
+            featureBoxes.forEach(box => {
+                box.addEventListener("click", () => {
+                    // Toggle active state
+                    if (box.classList.contains("active")) {
+                        box.classList.remove("active");
+                        activeCount--;
+                    } else {
+                        box.classList.add("active");
+                        activeCount++;
+                    }
+                    
+                    // Update total count
+                    totalCount.innerText = activeCount;
+                });
+            });
+        });
+        
+    </script>
+    
+
+</body>
+</html>

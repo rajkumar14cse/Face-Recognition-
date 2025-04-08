@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Face Recognition Attendance System</title>
+  <link rel="stylesheet" href="about.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+.header {
+  padding: 30px 20px;
+  text-align: center;
+  background: #007bff;
+  color: white;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.header .tagline {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.about-content {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-btn {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 15px 20px;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.accordion-btn:hover {
+  background-color: #0056b3;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #f1f1f1;
+  padding: 0 20px;
+  border-left: 3px solid #007bff;
+  border-radius: 0 0 5px 5px;
+}
+
+.accordion-content p {
+  margin: 10px 0;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #007bff;
+  color: white;
+}
+
+.footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.timeline-step {
+  flex: 1;
+  min-width: 280px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.timeline-step:hover {
+  transform: translateY(-8px);
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.timeline-step h3 {
+  color: #007bff;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.timeline-step p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+  </style>
+  <header class="header">
+    <h1><i class="fas fa-user-check"></i> Attendance Management System Using Face Recognition</h1>
+    <p class="tagline">Revolutionizing Attendance with AI-Powered Precision!</p>
+  </header>
+
+  <main class="about-content">
+    <section class="overview reveal">
+      <h2>📌 Overview</h2>
+      <p>
+        A modern solution that uses facial recognition to automatically record attendance, 
+        enhancing security and saving valuable time.
+      </p>
+    </section>
+
+    <section class="features reveal">
+      <h2>✨ Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">🎯 Accurate Face Detection</div>
+        <div class="feature-card">📸 Auto Photo Capture</div>
+        <div class="feature-card">📊 Excel Report Export</div>
+        <div class="feature-card">👥 Easy User Registration</div>
+        <div class="feature-card">📅 Real-time Attendance Log</div>
+      </div>
+    </section>
+
+    <section class="how-it-works reveal">
+      <h2>⚙️ How It Works</h2>
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="step-icon">📷</div>
+          <h3>1. Register Faces</h3>
+          <p>Capture multiple images of each user to build a unique facial dataset with better accuracy.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="step-icon">🤖</div>
+          <h3>2. Real-time Recognition</h3>
+          <p>The system uses facial recognition to identify users automatically during attendance.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="step-icon">📁</div>
+          <h3>3. Save to Excel</h3>
+          <p>Attendance data is stored securely in an Excel sheet for easy viewing, analysis, and record keeping.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tech-stack reveal">
+      <h2>💻 Technology Stack</h2>
+      <p>Python, OpenCV, face_recognition, JavaScript, HTML, CSS, Excel</p>
+    </section>
+
+    <section class="developer reveal">
+      <h2>👨‍💻 About the Developer</h2>
+      <p>
+        Developed by Manasa Mateti, passionate about automating real-world tasks using AI and Python.
+        This system brings intelligence and efficiency to routine attendance management.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>📧 Contact: <a href="mailto:rajkumargundaboina@gmail.com">rajkumargundaboina@gmail.com</a></p>
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </footer>
+
+  <script>
+    // Animation reveal on scroll
+    const reveals = document.querySelectorAll(".reveal");
+
+    window.addEventListener("scroll", () => {
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+    });
+
+    // Accordion
+    const accordionBtns = document.querySelectorAll(".accordion-btn");
+    accordionBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("open");
+        const content = btn.nextElementSibling;
+        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+      });
+    });
+  </script>
+  // Accordion functionality
+  <script>
+  document.querySelectorAll('.accordion-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+    
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+  
+        if (revealTop < windowHeight - revealPoint) {
+          reveals[i].classList.add('active');
+        }
+      }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+  </script>
+</body>
+</html>
